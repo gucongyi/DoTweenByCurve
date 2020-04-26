@@ -76,11 +76,17 @@ public static class GameTools
         anim.delay = tweendata.Delay;
         anim.id = tweendata.id;
         anim.endValueV3 = tweendata.endValueVector3;
-        
-        //6.设置动画曲线
-        anim.easeType = Ease.INTERNAL_Custom;
-        anim.easeCurve = easeCurve;//CreateTween里边已经设置了if (easeType == Ease.INTERNAL_Custom) tween.SetEase(easeCurve);
 
+        //6.设置动画曲线
+        if (easeCurve != null)
+        {
+            anim.easeType = Ease.INTERNAL_Custom;
+            anim.easeCurve = easeCurve;//CreateTween里边已经设置了if (easeType == Ease.INTERNAL_Custom) tween.SetEase(easeCurve);
+        }
+        else
+        {
+            anim.easeType = Ease.Linear;
+        }
         //7.创建动画
         anim.CreateTween();
         //8.设置回调
